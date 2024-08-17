@@ -1,0 +1,82 @@
+body {
+  font: 20px "Comic Sans MS";
+  width: auto;
+  background-color: #000;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 25px;
+  width:90%;
+  height:70%;
+  padding: 10px;
+  margin: 10px;
+} 
+
+form {
+  color: #fff;
+  width: auto;
+
+}
+select {
+    font-size: 20px;
+    color: #fff;
+    font-family: "Comic Sans MS";
+    width: auto;
+    background-color: #000;
+    }
+
+table {
+  width: auto;
+  height: auto;
+  
+}
+
+table .operacion {
+
+    display: block;
+    font-family: "Comic Sans MS";
+    color: #444;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    }
+table .caracteristicas {
+    display: block;
+    font-family: "Comic Sans MS";
+    
+    background-color: #1000;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    }
+
+td {
+  width: auto;
+  height: auto;
+  background-color: #9993;
+  text-align: right;
+ 
+}
+ .operacion td {
+  width: 35px;
+  height: 10px;
+  background-color: #9993;
+  text-align: right;
+  font-size: 100%
+}
+tr .eq{
+font-family: "Arial";
+font-size: 100%; 
+background-color: #FF3633
+
+}
+input{
+  /* Importante definir un width y un height para que no se vaya haciendo más pequeño al disminuir el tamaño */
+  font-size: 20px;
+    font-family: "Comic Sans MS";
+    width: auto;
+    color: #fff;
+    background-color: #000;
+}
