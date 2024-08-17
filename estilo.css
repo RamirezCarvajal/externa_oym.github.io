@@ -29,8 +29,8 @@ select {
     }
 
 table {
-  width: auto;
-  height: auto;
+  width: 95%;
+  height: 70%;
   
 }
 
@@ -40,15 +40,15 @@ table .operacion {
     font-family: "Comic Sans MS";
     color: #444;
     width: 95%;
-    height: 95%;
+    height: 70%;
     box-sizing: border-box;
     }
 table .caracteristicas {
     display: block;
     font-family: "Comic Sans MS";
     background-color: #1000;
-    width: auto;
-    height: auto;
+    width: 95%;
+    height: 70%;
     box-sizing: border-box;
     }
 
