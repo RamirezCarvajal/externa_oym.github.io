@@ -1,12 +1,377 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
+     <meta charset="utf-8"/>
+     <title>calibracion</title>
+    <h1> CALIBRACION</h1>
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> 
+     <link rel="stylesheet" type="text/css" href="estilo.css"> 
+   
+</head>
 
-<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
-<link rel="stylesheet" type="text/css" href="estilo.css">
-<title>OT abiertas</title>
+ <script type="text/javascript">
+ 	
+ 	function activos(){
+ 		var activo = document.getElementById("activo").value;
+		document.getElementById("amplificador").innerHTML= activo;
+		//document.write(activo);
+ 		//document.write("<br>");
+ 		mactivo=[
+ 			['HGBT','SCIENTIFIC',12,12,0,3,24,34,10.5],//amplif,familia,ch2,ch132,plana,salidas,voltajem,padACG
+ 			['HGD','SCIENTIFIC',13,13,0,'2 o 3',24,34,10.5],
+ 			['GMLE','SCIENTIFIC',15,19,4,1,12,29,9],//el 3er numero es para identificar que no es plana
+ 			['GSLE','SCIENTIFIC',12,12,0,1,12,'NA','NA'],
+ 			['BTD','MOTOROLA',12,12,0,4,24,7,'NA'],
+ 			['MB','MOTOROLA',13,13,0,'2 o 3',24,11,'NA'],
+ 			['BLE1','MOTOROLA',18,18,0,1,12,7,'NA'],
+ 			['BLE2','MOTOROLA',15,19,4,1,12,7,'NA'],//el 3er numero es para identificar que no es plana
+ 			['BHA','MOTOROLA',14,14,0,1,'NA','NA','NA'],//el 3er numero es para identificar que no es plana
+ 		];
+ 		eqinter='NA';
+ 		for (var i = 0; i < mactivo.length; i++) {
+ 			
+ 			if (mactivo[i][0]==activo) {
+ 				act=mactivo[i][0];
+ 				fam=mactivo[i][1];
+ 				rch2=mactivo[i][2];
+ 				rch135=mactivo[i][3];
+ 				plana=mactivo[i][4];
+ 				salidas=mactivo[i][5];
+ 				voltaje_m=mactivo[i][6];
+ 				pad_agc=mactivo[i][7];
+ 				eqinter=mactivo[i][8];//eq inter etapa
+ 				if (rch2==rch135) {
+ 				document.getElementById("amplificador").innerHTML= "Niveles de entrada "+rch2+"dB"+" planos";
+ 				}
+ 				else{document.getElementById("amplificador").innerHTML= "Niveles de entrada "+rch2+"dB"+" "+rch135+"dB";}
+
+ 				if (fam=='SCIENTIFIC') {
+ 				document.getElementById("PAD_AGC").innerHTML= "Pad AGC= Nivele canal 70 - "+pad_agc+"dB";
+ 				}
+ 				else{document.getElementById("PAD_AGC").innerHTML= "PAD AGC = "+pad_agc+"dB de Fabrica";}
+				
+ 				document.getElementById("salidas").innerHTML= "Salidas "+salidas;
+ 				document.getElementById("voltaje").innerHTML= "Voltaje Modulo "+voltaje_m+"Vdc";
+ 				document.getElementById("eqinter").innerHTML= "EQ interetapa "+eqinter+"dB Inmodificable";
+ 			}
+ 		}	
+ 	}
+	 	function resta() {
+		 	if (fam=='SCIENTIFIC') {
+		 					
+		 		//document.getElementById("resultado").innerHTML = fam;
+		 		eq=[11.9,10.8,9.8,8.7,7.6,6.5,5.4,4.3,3.2,2.2,1.1,0];//pendiente scientific
+		 		inv=[1.3,2.6,3.9,5.2,6.5,7.8,9.1,10.4,11.7,14];//pendiente scientific
+		 	
+		 		a=document.form.ch2.value;
+		 		b=document.form.ch135.value;
+		 		
+		 		if (plana==4) {
+		 			b=b-4;
+		 		}
+
+		 			ch2=0;
+			 		c= (b-a);
+			 		c=c.toFixed(1);//solo un decimal
+			 		//document.form.pendiente.value= c;
+			 		document.getElementById("pendienter").innerHTML = c;
+			 		if (c>=0){
+			 			var antes =0;
+			 			for (var i = 0; i < inv.length; i++) {
+			 				if (c < inv[i]) {
+			 					despues=inv[i];
+			 					//document.form.pen.value=inv[i];
+			 					i=inv.length;
+			 				}
+			 				else{
+			 				antes=inv[i];
+			 				//document.form.antes.value=inv[i];
+			 				}
+			 			}
+			 			c=Math.abs(c)
+			 			var inversor = 'INV';
+			 			var resta1= c-antes;
+			 			var resta2= despues-c;
+			 			if (resta1 > resta2){
+			 			//document.form.cerca.value=despues;
+			 			var binv=despues;
+			 			document.getElementById("content").innerHTML = despues;
+			 			}
+			 			else
+			 			{
+			 			//document.form.cerca.value=antes;
+			 			var binv=antes;
+			 			document.getElementById("content").innerHTML = antes;
+			 			}
+			 			var minv=[
+			 					[1.3,1.6,1.0,2.3],
+			 					[2.6,3.3,1.0,3.6],
+			 					[3.9,4.9,1.0,4.9],
+			 					[5.2,6.5,1.0,6.2],
+			 					[6.5,8.1,1.0,7.5],
+			 					[7.8,9.8,1.0,8.8],
+			 					[9.1,11.4,1.0,10.1],
+			 					[10.4,13.0,1.0,11.4],
+			 					[11.7,14.6,1.0,12.7],
+			 					[14.0,16.2,1.0,14.0],
+			 				];
+			 					for (var i = 0; i < minv.length; i++) {
+			 						if (minv[i][0]==binv) {
+			 							var inversor = minv[i][1];
+			 							var ch2 = minv[i][2];
+			 							var ch135 = minv[i][3];
+			 							document.getElementById("inversor").innerHTML = 'INV:'+' ' + inversor;
+			 							document.getElementById("canal2").innerHTML = ch2;
+			 							document.getElementById("canal135").innerHTML = ch135;
+			 						}
+			 					}
+
+			 		}
+			 		else{
+			 			c=Math.abs(c)
+			 			var antes =0;
+			 			for (var i = 0; i < eq.length; i++) {
+			 				if (c > eq[i]) {
+			 					despues=eq[i];
+			 					//document.form.pen.value=eq[i];
+			 					i=eq.length;
+			 				}
+			 				else{
+			 					antes=eq[i];
+			 					//document.form.antes.value=eq[i];
+			 				}
+			 			}
+			 		c=Math.abs(c)
+			 		var equalizador = 'EQ';
+			 		var resta1= c-antes;
+			 		var resta2= despues-c;
+			 		if (resta1 > resta2){
+			 			var beq=antes;
+			 			//document.form.cerca.value=antes;
+			 			document.getElementById("content").innerHTML = 	' -'+ antes;
+			 		}
+			 		else
+			 		{
+			 			var beq=despues;
+			 			//document.form.cerca.value=despues;
+			 			document.getElementById("content").innerHTML = ' -' + despues;
+			 		}
+			 		var minv=[
+			 					[0,0,0,0],
+			 					[1.1,1.5,2.2,1.1],
+			 					[2.2,3.0,3.4,1.2],
+			 					[3.2,4.5,4.6,1.4],
+			 					[4.3,6.0,5.8,1.5],
+			 					[5.4,7.5,7.0,1.6],
+			 					[6.5,9.0,8.2,1.7],
+			 					[7.6,10.5,9.4,1.8],
+			 					[8.7,12.0,10.6,1.9],
+			 					[9.8,13.5,11.8,2.0],
+			 					[10.8,15.0,13.0,2.2],
+			 					[11.9,16.5,14.2,2.3],
+
+			 				];
+			 					for (var i = 0; i < minv.length; i++) {
+			 						if (minv[i][0]==beq) {
+			 							inversor = minv[i][1];
+			 							ch2 = minv[i][2];
+			 							ch135 = minv[i][3];
+			 							document.getElementById("inversor").innerHTML = 'EQ:'+' ' + inversor;
+			 							document.getElementById("canal2").innerHTML = ch2;
+			 							document.getElementById("canal135").innerHTML = ch135;
+			 						}
+			 					}
+			 		}
+			 		pad2 = (a-ch2-rch2);	
+			 		pad5= (b-ch135-rch135);
+			 		pad2=pad2.toFixed(2);
+			 		pad5=pad5.toFixed(2);
+			 		document.getElementById("pad2").innerHTML = pad2;
+			 		//document.getElementById("pad5").innerHTML = pad5;
+			 		
+		 	}
+		 	else{ //**************MOTOROLA*********************
+		 		//document.getElementById("resultado").innerHTML = fam;
+		 		eq=[15.5,14.8,14,13.2,12.4,11.7,10.9,10.1,9.3,8.5,7.8,6.4,6.2,5.4,4.7,3.9,3.1,2.3,1.6,0.8,0];//pendiente motorola
+		 		//eq=[0,0.8,1.6,2.3,3.1,3.9,4.7,5.4,6.2,6.4,7.8,8.5,9.3,10.1,10.9,11.7,12.4,13.2,14,14.8,15.5];
+		 		inv=[0.2,1.5,2.7,3.9,5.2,6.4,7.7,8.9,10.1,11.4];//pendiente motorola
+		 		
+		 		a=document.form.ch2.value;
+		 		b=document.form.ch135.value;
+		 		if (plana==4) {
+		 			b=b-4;
+		 		}
+		 		ch2=0;
+		 		c= (b-a);//pendiente
+		 		c=c.toFixed(1);//solo un decimal
+		 		//document.form.pendiente.value= c;
+		 		document.getElementById("pendienter").innerHTML = c;
+		 		if (c>=0){
+		 			var antes =0;
+		 			for (var i = 0; i < inv.length; i++) {
+		 				if (c < inv[i]) {
+		 					despues=inv[i];
+		 					//document.form.pen.value=inv[i];
+		 					i=inv.length;
+		 				}
+		 				else{
+		 				antes=inv[i];
+		 				//document.form.antes.value=inv[i];
+		 				}
+		 			}
+		 			c=Math.abs(c)
+		 			var inversor = 'INV';
+		 			var resta1= c-antes;
+		 			var resta2= despues-c;
+		 			if (resta1 > resta2){
+		 			//document.form.cerca.value=despues;
+		 			var binv=despues;
+		 			document.getElementById("content").innerHTML = despues;
+		 			}
+		 			else
+		 			{
+		 			//document.form.cerca.value=antes;
+		 			var binv=antes;
+		 			document.getElementById("content").innerHTML = antes;
+		 			}
+		 			var minv=[
+		 					[0.2,1,1.0,1.2],//esta pabla esta organizada asi
+		 					[1.5,2,1.0,2.5],//pendiente,inv,ch2,ch135
+		 					[2.7,3,1.0,3.7],
+		 					[3.9,4,1.0,4.9],
+		 					[5.2,5,1.0,6.2],
+		 					[6.4,6,1.0,7.4],
+		 					[7.7,7,1.0,8.7],
+		 					[8.9,8,1.0,9.9],
+		 					[10.1,9,1.0,11.1],
+		 					[11.4,10,1.0,12.4],
+		 				];
+		 					for (var i = 0; i < minv.length; i++) {
+		 						if (minv[i][0]==binv) {
+		 							var inversor = minv[i][1];
+		 							var ch2 = minv[i][2];
+		 							var ch135 = minv[i][3];
+		 							document.getElementById("inversor").innerHTML = 'INV:'+' ' + inversor;
+		 							document.getElementById("canal2").innerHTML = ch2;
+		 							document.getElementById("canal135").innerHTML = ch135;
+		 						}
+		 					}
+
+		 		}
+		 		else{
+		 			c=Math.abs(c)
+		 			var antes =0;
+		 			for (var i = 0; i < eq.length; i++) {
+		 				if (c > eq[i]) {
+		 					despues=eq[i];
+		 					//document.form.pen.value=eq[i];
+		 					i=eq.length;
+		 				}
+		 				else{
+		 					antes=eq[i];
+		 					//document.form.antes.value=eq[i];
+		 				}
+		 			}
+		 		c=Math.abs(c)
+		 		var equalizador = 'EQ';
+		 		var resta1= c-antes;
+		 		var resta2= despues-c;
+		 		if (resta1 > resta2){
+		 			var beq=antes;
+		 			//document.form.cerca.value=antes;
+		 			document.getElementById("content").innerHTML = 	' -'+ antes;
+		 		}
+		 		else
+		 		{
+		 			var beq=despues;
+		 			//document.form.cerca.value=despues;
+		 			document.getElementById("content").innerHTML = ' -' + despues;
+		 		}
+		 		var minv=[
+		 					[0,0,1,1],
+		 					[0.8,1,1.8,1.1],//pendiente,inv,ch2,ch135
+		 					[1.6,2,2.6,1.1],
+		 					[2.3,3,3.3,1.2],
+		 					[3.1,4,4.1,1.3],
+		 					[3.9,5,4.9,1.3],
+		 					[4.7,6,5.7,1.4],
+		 					[5.4,7,6.4,1.5],
+		 					[6.2,8,7.2,1.5],
+		 					[6.4,9,8,1.6],
+		 					[7.8,10,8.8,1.7],
+		 					[8.5,11,9.5,1.8],
+		 					[9.3,12,10.3,1.8],
+		 					[10.1,13,11.1,1.9],
+		 					[10.9,14,11.9,2],
+		 					[11.7,15,12.7,2],
+		 					[12.4,16,13.4,2.1],
+		 					[13.2,17,14.2,2.2],
+		 					[14,18,15,2.2],
+		 					[14.8,19,15.8,2.3],
+		 					[15.5,20,16.5,2.4],
+		 				];
+		 					for (var i = 0; i < minv.length; i++) {
+		 						if (minv[i][0]==beq) {
+		 							inversor = minv[i][1];
+		 							ch2 = minv[i][2];
+		 							ch135 = minv[i][3];
+
+		 							document.getElementById("inversor").innerHTML = 'EQ:'+' ' + inversor;
+		 							document.getElementById("canal2").innerHTML = ch2;
+		 							document.getElementById("canal135").innerHTML = ch135;
+		 						}
+		 					}
+		 		}
+		 		pad2 = (a-ch2-rch2);	
+		 		pad5= (b-ch135-rch135);
+		 		pad2=pad2.toFixed(2);
+		 		pad5=pad5.toFixed(2);
+		 		document.getElementById("pad2").innerHTML = pad2;
+
+		 	} //else motorola
+	 	}
+
+ </script>
+	 	
 <body>
-  <h1>EXTERNA</h1>
+<form name="form" id= "form" method="post" action="seccion.php" enctype="multipart/form-data"></center>
+<table>
+<tr><td>ACTIVO:</td><td><select id='activo' onchange="activos()" required>
+			<option value=''></option>
+			<option value='HGBT'>HGBT</option>
+			<option value='HGD'>HGD</option>
+			<option value='GMLE'>GMLE</option>
+			<option value='GSLE'>GSLE</option>
+			<option value='BTD'>BTD</option>
+    		<option value='MB'>MB</option>
+    		<option value='BLE1'>BLE(LDR 12dB)</option>
+    		<option value='BLE2'>BLE(LDR 8/9dB)</option>
+    		<option value='BHA'>BHA</option>
+    	</select></td></tr>
+    </table>
+    <table class="caracteristicas">
+    <tr><td><center><div id="amplificador"></div></center>
+    <!--tr><td><center><div id="resultado"></div></center-->
+    <tr><td><center><div id="salidas"></div></center>
+    <tr><td><center><div id="voltaje"></div></center>
+    <tr><td><center><div id="PAD_AGC"></div></center>
+    <tr><td><center><div id="eqinter"></div></center>
+    </table>
+
+    <table border="0" class="operacion">
+	<tr><td>CH2:</td><td  style="text-align:left";><input type='number' name='ch2' placeholder="CH2" id="num2" onkeyup="resta()" style="width: 90px";></td></tr>
+	<tr><td>CH135:</td><td style="text-align:left"><input type='number' name='ch135' placeholder="CH135" id="num1" onkeyup="resta()" style="width: 90px"></td></tr>
+
+	<tr><td>Pendiente Real:<td><center><div id="pendienter"></div>
+    <tr><td class="eq">Pendiente:<td class="eq"><center><div id="content"></div>
+    <tr><td class="eq">EQ/INV:<td class="eq"><center><div id="inversor"></div>
+    <tr><td>Resta CH2:<td><center><div id="canal2"></div>
+    <tr><td>Resta CH135:<td><center><div id="canal135"></div>
+    <tr><td class="eq">PAD:<td class="eq"><center><div id="pad2"></div></td>
 </body>
+</table></center>
+</from>	 
+
+
+</html>
