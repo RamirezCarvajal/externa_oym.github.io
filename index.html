@@ -20,12 +20,12 @@
  		mactivo=[
  			['HGBT','SCIENTIFIC',6,6,0,3,24,34,10.5],//amplif,familia,ch2,ch132,plana,salidas,voltajem,padACG
  			['HGD','SCIENTIFIC',7,7,0,'2 o 3',24,34,10.5],
- 			['GMLE','SCIENTIFIC',9,'13,4',1,12,29,9],//el 3er numero es para identificar que no es plana
+ 			['GMLE','SCIENTIFIC',9,13,4,1,12,29,9],//el 3er numero es para identificar que no es plana
  			['GSLE','SCIENTIFIC',6,6,0,1,12,'NA','NA'],
  			['BTD','MOTOROLA',6,6,0,4,24,7,'NA'],
  			['MB','MOTOROLA',7,7,0,'2 o 3',24,11,'NA'],
  			['BLE1','MOTOROLA',12,12,0,1,12,7,'NA'],
- 			['BLE2','MOTOROLA',9,13.4,1,12,7,'NA'],//el 3er numero es para identificar que no es plana
+ 			['BLE2','MOTOROLA',9,13,4,1,12,7,'NA'],//el 3er numero es para identificar que no es plana
  			['BHA','MOTOROLA',8,8,0,1,'NA','NA','NA'],//el 3er numero es para identificar que no es plana
  		];
  		eqinter='NA';
@@ -67,8 +67,8 @@
 		 		a=document.form.ch2.value;
 		 		b=document.form.ch135.value;
 		 		
-		 		if (plana==4,4) {
-		 			b=b-4,4;
+		 		if (plana==4) {
+		 			b=b-4;
 		 		}
 
 		 			ch2=0;
@@ -199,8 +199,8 @@
 		 		
 		 		a=document.form.ch2.value;
 		 		b=document.form.ch135.value;
-		 		if (plana==4,4) {
-		 			b=b-4,4;
+		 		if (plana==4) {
+		 			b=b-4;
 		 		}
 		 		ch2=0;
 		 		c= (b-a);//pendiente
@@ -360,18 +360,15 @@
     </table>
 
     <table border="0" class="operacion">
-	 <tr><td colspan='2'>Nivesles de entrada</td><td colspan='2'>Restar</td><tr>   
-	<tr><td>CH30:</td><td  style="text-align:left";><input type='number' name='ch2' placeholder="CH30" id="num2" onkeyup="resta()" style="width: 90px";></td>
-    	<td><div id="canal2"></div></td><td></td></tr>
-	<tr><td>CH135:</td><td style="text-align:left"><input type='number' name='ch135' placeholder="CH135" id="num1" onkeyup="resta()" style="width: 90px">
-	</td><td><div id="canal135"></div></td><td></td></tr>
+	<tr><td>CH2:</td><td  style="text-align:left";><input type='number' name='ch2' placeholder="CH2" id="num2" onkeyup="resta()" style="width: 90px";></td></tr>
+	<tr><td>CH135:</td><td style="text-align:left"><input type='number' name='ch135' placeholder="CH135" id="num1" onkeyup="resta()" style="width: 90px"></td></tr>
 
-	<tr><td>Pendiente Real:<td colspan='3'><center><div id="pendienter"></div>
-    	<tr><td class="eq">Pendiente:<td colspan='3' class="eq"><center><div id="content"></div>
-    	<tr><td class="eq">EQ/INV:<td colspan='3' class="eq"><center><div id="inversor"></div>
-    	<!--tr><td>Resta CH30:<td><center><div id="canal2"></div>
-    	<tr><td>Resta CH135:<td><center><div id="canal135"></div-->
-    	<tr><td class="eq">PAD:<td colspan='3' class="eq"><center><div id="pad2"></div></td>
+	<tr><td>Pendiente Real:<td><center><div id="pendienter"></div>
+    <tr><td class="eq">Pendiente:<td class="eq"><center><div id="content"></div>
+    <tr><td class="eq">EQ/INV:<td class="eq"><center><div id="inversor"></div>
+    <tr><td>Resta CH2:<td><center><div id="canal2"></div>
+    <tr><td>Resta CH135:<td><center><div id="canal135"></div>
+    <tr><td class="eq">PAD:<td class="eq"><center><div id="pad2"></div></td>
 </body>
 </table></center>
 </from>	 
