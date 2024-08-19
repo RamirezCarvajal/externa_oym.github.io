@@ -323,6 +323,11 @@
 		 						}
 		 					}
 		 		}
+				for (var i = 0; i < minv.length; i++) {
+            			tabla += minv[i][2] + minv[i][3];
+ 					          			
+            			}
+        				document.getElementById("ulListado").innerHTML = tabla;
 		 		pad2 = (a-ch2-rch2);	
 		 		pad5= (b-ch135-rch135);
 		 		pad2=pad2.toFixed(2);
@@ -375,6 +380,6 @@
 </body>
 </table></center>
 </from>	 
-
+<ul id="ulListado"></ul>
 
 </html>
