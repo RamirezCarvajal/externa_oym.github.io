@@ -1,0 +1,38 @@
+<!DO<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibración</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css"></link>
+    <script src="main.js"></script>
+</head>
+    <body>
+      <a href="https://ramirezcarvajal.github.io/externa_oym.github.io/">SPLIN K</a>
+      <form name="form" id="for" action="" method="post ">
+        <label>ACTIVO</label>
+        <select name="activo" id="activo" onchange="niveles() " required>
+          <option value=""></option>
+          <option value="HGBT">HGBT</option>
+          <option value="HGD">HGD</option>
+          <option value="GMLE">GMLE</option>
+          <option value="GSLE">GSLE</option>
+          <option value="BTD">BTD</option>
+          <option value="MB">MB</option>
+          <option value="BLE1">BLE(LDR 12db)</option>
+          <option value="BLE2">BLE(LDR 8/9db)</option>
+          <option value="BHA">BHA</option>
+        </select>
+        <div id="amp1"></div>
+        <label>CH30</label>
+        <input type="number" name="chb" id="" onkeyup="niveles()">
+        <label>CH124</label>
+        <input type="number" name="cha" id="" onkeyup="niveles()">
+      </form>
+      
+      <div id="amp"></div>
+      
+      <div id="tabla"></div>
+
+    </body>
+</html>
