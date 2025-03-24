@@ -43,7 +43,7 @@ table {
   color: #FFF;
   display: block;  
   box-sizing: border-box;
-  text-alingn: crnter
+  text-alingn: center
   
 }
 
@@ -68,7 +68,6 @@ background-color: #FF3633
 
 }
 input{
-  /* Importante definir un width y un height para que no se vaya haciendo más pequeño al disminuir el tamaño */
   font-size: 20px;
   font-family: "Comic Sans MS";
   width: auto;
