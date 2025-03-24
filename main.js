@@ -13,7 +13,7 @@ function niveles() {
    ["BHA","MOTOROLA",8," planos",1,"NA","NA","NA"]
     ];
     amp1=0;
-    amp1 = amp1 + "<table class='caracteristicas'> ";
+    amp1 = amp1 + "<tablep> ";
     for (var i = 0; i < mactivo.length; i++) {
       if (mactivo[i][0] == activo) {
         
@@ -24,8 +24,9 @@ function niveles() {
         amp1= amp1+"<tr><td>Voltaje<td>"+ mactivo[i][5];
         amp1= amp1+"<tr><td>PAD AGC<td>"+ mactivo[i][6];
         amp1= amp1+"<tr><td>EQ inter etapa<td>"+ mactivo[i][7];
-        amp1 = amp1+"<table>";
+        amp1 = amp1+"</table>";
         var fam= mactivo[i][1];
+
         document.getElementById("amp1").innerHTML=amp1;
         
       }
