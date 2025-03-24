@@ -41,15 +41,17 @@ table {
   width: 95%;
   height: 70%;
   font-family: "Comic Sans MS";
+  color: #444;
+  display: block;  
+   box-sizing: border-box;
   
 }
 
 table .operacion{
 
-    display: block;  
-    color: #444;
-    box-sizing: border-box;
+    
     }
+
 table .caracteristicas{
     display: block;
     box-sizing: border-box;
