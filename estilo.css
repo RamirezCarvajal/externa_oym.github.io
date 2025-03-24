@@ -43,7 +43,7 @@ table {
   
 }
 
-table .operacion {
+table {
 
     display: block;
     font-family: "Comic Sans MS";
@@ -52,7 +52,7 @@ table .operacion {
     height: 70%;
     box-sizing: border-box;
     }
-table .caracteristicas {
+table{
     display: block;
     font-family: "Comic Sans MS";
     background-color: #1000;
