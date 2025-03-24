@@ -40,24 +40,18 @@ select {
 table {
   width: 95%;
   height: 70%;
+  font-family: "Comic Sans MS";
   
 }
 
 table .operacion{
 
-    display: block;
-    font-family: "Comic Sans MS";
+    display: block;  
     color: #444;
-    width: 95%;
-    height: 70%;
     box-sizing: border-box;
     }
 table .caracteristicas{
     display: block;
-    font-family: "Comic Sans MS";
-    background-color: #1000;
-    width: 95%;
-    height: 70%;
     box-sizing: border-box;
     }
 
