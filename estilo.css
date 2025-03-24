@@ -68,9 +68,10 @@ background-color: #FF3633
 
 }
 input{
+  
   font-size: 20px;
   font-family: "Comic Sans MS";
-  width: auto;
+  width: 30px;
   color: #fff;
   background-color: #000;
 }
