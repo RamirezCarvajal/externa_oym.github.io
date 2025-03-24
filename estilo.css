@@ -43,6 +43,7 @@ table {
   color: #FFF;
   display: block;  
   box-sizing: border-box;
+  text-alingn: crnter
   
 }
 
@@ -50,7 +51,7 @@ td {
   width: auto;
   height: auto;
   background-color: #9993;
-  text-align: right;
+  text-align: center;
  
 }
  .operacion td {
