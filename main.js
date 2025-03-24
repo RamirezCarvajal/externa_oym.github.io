@@ -13,7 +13,7 @@ function niveles() {
    ["BHA","MOTOROLA",8," planos",1,"NA","NA","NA"]
     ];
     amp1=0;
-    amp1 = amp1 + "<tablep> ";
+    amp1 = amp1 + "<table> ";
     for (var i = 0; i < mactivo.length; i++) {
       if (mactivo[i][0] == activo) {
         
