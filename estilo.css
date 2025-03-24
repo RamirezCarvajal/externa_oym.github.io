@@ -38,12 +38,13 @@ select {
     }
 
 table {
-  width: 95%;
+  width: auto;
+  max-width: 500px;
   font-family: "Comic Sans MS";
   color: #FFF;
   display: block;  
   box-sizing: border-box;
-  text-alingn: center
+  text-alingn: center;
   
 }
 
