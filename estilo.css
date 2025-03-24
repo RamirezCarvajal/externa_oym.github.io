@@ -10,7 +10,7 @@ h1 {
   color: #fff;
   font-size: 25px;
   width:90%;
-  height:70%;
+  height:10%;
   padding: 10px;
   margin: 10px;
 } 
@@ -43,7 +43,7 @@ table {
   
 }
 
-table {
+table .operacion{
 
     display: block;
     font-family: "Comic Sans MS";
@@ -52,7 +52,7 @@ table {
     height: 70%;
     box-sizing: border-box;
     }
-table{
+table .caracteristicas{
     display: block;
     font-family: "Comic Sans MS";
     background-color: #1000;
