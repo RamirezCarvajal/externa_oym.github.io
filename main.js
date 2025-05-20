@@ -4,7 +4,7 @@ function niveles() {
   //document.getElementById("amp").innerHTML= activo;
   let mactivo=[["HGBT","CISCO",6," planos",3,24,34,10.5],//amplif-familia-ch30-ch124-plana-salidas-voltaje-padAGC
     ["HGD","CISCO",7," planos","2 o 3",24,34,10.5],
-    ["GMLE","CISCO",9," 13db",1,12,29,9],
+    ["GMLE","CISCO",10.26," 12.68db",1,12,29,9],
     ["GSLE","CISCO",6," planos",1,12,"NA","NA"],
     ["BTD","MOTOROLA",6," planos",4,24,7,"NA"],
     ["MB","MOTOROLA",7," planos","2 o 3",24,11,"NA"],
@@ -37,7 +37,7 @@ function niveles() {
       
       var b = document.form.chb.value;
       var a = document.form.cha.value;
-      if (activo == "GMLE"){a=a-4};
+      if (activo == "GMLE"){a=a-2,42};
       
       tabla = "<table>";
       tabla=tabla+"<th colspan='6'>CISCO";
