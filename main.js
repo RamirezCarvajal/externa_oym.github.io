@@ -9,7 +9,7 @@ function niveles() {
     ["BTD","MOTOROLA",6," planos",4,24,7,"NA"],
     ["MB","MOTOROLA",7," planos","2 o 3",24,11,"NA"],
     ["BLE1","MOTOROLA",12," planos",1,12,7,"NA"],
-    ["BLE2","MOTOROLA",9," 13db",1,12,7,"NA"],
+    ["BLE2","MOTOROLA",10.26," 12.68db",1,12,7,"NA"],
    ["BHA","MOTOROLA",8," planos",1,"NA","NA","NA"]
     ];
     amp1=0;
@@ -37,7 +37,7 @@ function niveles() {
       
       var b = document.form.chb.value;
       var a = document.form.cha.value;
-      if (activo == "GMLE"){a=a-2,42};
+      if (activo == "GMLE"){a=a-2.42};
       
       tabla = "<table>";
       tabla=tabla+"<th colspan='6'>CISCO";
@@ -110,7 +110,7 @@ function niveles() {
       else {
       var b = document.form.chb.value;
       var a = document.form.cha.value;
-      if (activo=="BLE2"){a=a-4};
+      if (activo=="BLE2"){a=a-2.42};
       tabla = "<table>";
       tabla=tabla+"<th colspan='6'>MOTOROLA";
         if (b>=a) {
